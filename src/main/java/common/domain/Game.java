@@ -1,62 +1,36 @@
 package common.domain;
 
+import common.behaviour.Field;
+
 public class Game {
-    private Field[][] field;
+    protected Field[][] field;
 
-    private Timer timer;
+    protected Level level;
 
-    private int countOfBombs;
-
-    private int width;
-
-    private int height;
+    private int countOfLeftBombs;
 
     public Game() {
     }
 
-    public Game(int width, int height) {
-        this.width = width;
-        this.height = height;
-        this.field = new Field[width][height];
+    public Game(Level level) {
+        this.level = level;
+        this.field = new Field[level.getWidth()][level.getHeight()];
+        this.countOfLeftBombs = level.getCountOfBombs();
     }
 
     public Field[][] getField() {
         return field;
     }
 
-    public void setField(Field[][] field) {
-        this.field = field;
+    public int getCountOfLeftBombs() {
+        return countOfLeftBombs;
     }
 
-    public Timer getTimer() {
-        return timer;
+    public void setCountOfLeftBombs(int countOfLeftBombs) {
+        this.countOfLeftBombs = countOfLeftBombs;
     }
 
-    public void setTimer(Timer timer) {
-        this.timer = timer;
-    }
-
-    public int getCountOfBombs() {
-        return countOfBombs;
-    }
-
-    public void setCountOfBombs(int countOfBombs) {
-        this.countOfBombs = countOfBombs;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
+    public void decreaseCountOfLeftBombs() {
+        countOfLeftBombs--;
     }
 }

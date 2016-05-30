@@ -1,5 +1,7 @@
 package common.behaviour;
 
+import common.domain.Field;
+
 public interface FieldMethods {
-    public void makeAMove();
+    public void makeAMove(Field[] surroundingFields);
 }

@@ -2,6 +2,7 @@ package windowsMiner.domain.fields;
 
 import common.behaviour.Field;
 import common.domain.AbstractField;
+import common.domain.Status;
 
 public class NumberField extends AbstractField implements Field {
     private int number;
@@ -11,14 +12,14 @@ public class NumberField extends AbstractField implements Field {
         number = 0;
     }
 
-    public boolean makeAMove() {
+    public Status makeAMove() {
         super.makeAMove();
         for (Field nearbyField: nearbyFields) {
             if (nearbyField instanceof BombField) {
                number++;
             }
         }
-        return true;
+        return new Status(1, false);
     }
 
     public int getNumber() {

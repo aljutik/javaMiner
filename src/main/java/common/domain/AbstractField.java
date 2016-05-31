@@ -1,11 +1,11 @@
 package common.domain;
 
 import common.behaviour.Field;
+import common.enums.FieldMarks;
 
 import java.util.List;
 
 public abstract class AbstractField implements Field {
-
     protected List<Field> nearbyFields;
     private int positionX;
 
@@ -22,9 +22,9 @@ public abstract class AbstractField implements Field {
         this.mark = FieldMarks.Empty;
     }
 
-    public boolean makeAMove() {
+    public Status makeAMove() {
         isOpen = true;
-        return true;
+        return new Status(1, false);
     }
 
     public int getPositionX() {
@@ -53,9 +53,5 @@ public abstract class AbstractField implements Field {
 
     public void setNearbyFields(List<Field> nearbyFields) {
         this.nearbyFields = nearbyFields;
-    }
-
-    public enum FieldMarks {
-        Bomb, NotBomb, Unknown, Empty
     }
 }

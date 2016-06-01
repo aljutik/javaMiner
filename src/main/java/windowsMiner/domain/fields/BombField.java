@@ -10,6 +10,9 @@ public class BombField extends AbstractField implements Field {
     }
 
     public Status makeAMove() {
+        if (isOpen()) {
+            return new Status(0, false);
+        }
         super.makeAMove();
         return new Status(1, true);
     }

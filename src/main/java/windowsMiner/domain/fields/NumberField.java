@@ -13,6 +13,9 @@ public class NumberField extends AbstractField implements Field {
     }
 
     public Status makeAMove() {
+        if (isOpen()) {
+            return new Status(0, false);
+        }
         super.makeAMove();
         for (Field nearbyField: nearbyFields) {
             if (nearbyField instanceof BombField) {

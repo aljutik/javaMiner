@@ -11,6 +11,9 @@ public class EmptyField extends AbstractField implements Field {
 
     @Override
     public Status makeAMove() {
+        if (isOpen()) {
+            return new Status(0, false);
+        }
         Status status = super.makeAMove();
         for(Field nearbyField : nearbyFields) {
             status.mergeStatus(nearbyField.makeAMove());

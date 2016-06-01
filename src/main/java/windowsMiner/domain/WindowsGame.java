@@ -48,6 +48,7 @@ public class WindowsGame extends AbstractGame implements Game {
             int column = random.nextInt(level.getHeight());
             if (!(field[row][column] instanceof BombField)) {
                 field[row][column] = new BombField(row, column);
+                countOfSetBomb++;
                 for (Field nearbyField : getNearbyFields(field[row][column])) {
                     if (nearbyField instanceof EmptyField) {
                         field[nearbyField.getPositionX()][nearbyField.getPositionY()] =
@@ -81,7 +82,7 @@ public class WindowsGame extends AbstractGame implements Game {
         }
     }
 
-    public List<Field> getNearbyFields(Field currentField) {
+    private List<Field> getNearbyFields(Field currentField) {
         List<Field> nearbyFields = new ArrayList<Field>();
 
         int currentX = currentField.getPositionX();
